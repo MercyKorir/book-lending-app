@@ -4,6 +4,23 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
 
 ---
 
+## 📑 Table of Contents
+1. [🚀 Features](#-features)
+2. [🛠 Tech Stack](#-tech-stack)
+3. [📂 Project Structure](#-project-structure)
+4. [🎯 Installation & Setup](#-installation--setup)
+    - [1️⃣ Prerequisites](#1-prerequisites)
+    - [2️⃣ Clone the Repository](#2-clone-the-repository)
+    - [3️⃣ Install Dependencies](#3-install-dependencies)
+    - [4️⃣ Configure Environment](#4-configure-environment)
+    - [5️⃣ Set Up Database](#5-set-up-database)
+    - [6️⃣ Start the Server](#6-start-the-server)
+5. [🔥 Usage](#-usage)
+6. [🧑‍💻 Contribution Guide](#-contribution-guide)
+7. [🛡️ Security & License](#-security--license)
+
+---
+
 ## 🚀 Features
 - 🏷️ **Book Borrowing & Return** – Users can borrow and return books.
 - 🔄 **Real-time Availability** – Borrow buttons are disabled for unavailable books.
@@ -17,14 +34,14 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
 ## 🛠 Tech Stack
 - **Framework:** Ruby on Rails
 - **Database:** SQLite3
-- **Authentication:** Devise (or other authentication solution)
+- **Authentication:** Devise
 - **Frontend:** ERB, Tailwind CSS
 
 ---
 
 ## 📂 Project Structure
 ```
-📂 library-borrowing-system
+📂 book-lending-app
 │── 📁 app/controllers      # Controllers (BooksController, BorrowingsController, etc.)
 │── 📁 app/models           # Models (Book, User, Borrowing)
 │── 📁 db/migrate           # Database migrations
@@ -48,18 +65,16 @@ Ensure you have the following installed:
 - Rails `>=7.0`
 - SQLite3
 - Node.js `>=18`
-- Yarn (for frontend assets)
 
 ### **2️⃣ Clone the Repository**
 ```bash
-git clone https://github.com/your-username/library-borrowing-system.git
-cd library-borrowing-system
+git clone https://github.com/MercyKorir/book-lending-app.git
+cd book-lending-app
 ```
 
 ### **3️⃣ Install Dependencies**
 ```bash
 bundle install
-yarn install  # If using TailwindCSS or frontend assets
 ```
 
 ### **4️⃣ Configure Environment**
@@ -106,14 +121,6 @@ Visit: `http://127.0.0.1:3000` 🎉
 ## 🛡️ Security & License
 - **Security:** If you find any security vulnerabilities, report them via issues.
 - **License:** This project is licensed under the **MIT License**.
-
----
-
-## 🤝 Support & Contact
-💬 Questions or feedback? Reach out via:
-- 📧 **Email**: your-email@example.com  
-- 🐦 **Twitter**: [@yourhandle](https://twitter.com/yourhandle)  
-- 🌐 **Website**: [yourwebsite.com](https://yourwebsite.com)  
 
 ---
 
