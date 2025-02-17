@@ -1,0 +1,28 @@
+<div class="card">
+  <h1 class="text-center mb-6">Your Borrowed Books</h1>
+  
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Book</th>
+          <th>Due Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @active_borrowings.each do |borrowing| %>
+          <tr>
+            <td><%= borrowing.book.title %></td>
+            <td><%= borrowing.due_date.strftime("%B %d, %Y") %></td>
+            <td>
+              <%= button_to "Return", return_borrowing_path(borrowing), 
+                  method: :put, 
+                  class: "btn btn-primary" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

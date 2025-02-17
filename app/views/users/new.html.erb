@@ -1,0 +1,85 @@
+<div class="form-container">
+  <div class="card form-card">
+    <h1 class="text-center mb-6">Sign Up</h1>
+
+    <%= form_with model: @user, url: sign_up_path, local: true, html: { class: "signup-form" } do |form| %>
+      <div class="form-field">
+        <%= form.label :email %>
+        <%= form.email_field :email,
+            required: true,
+            class: "w-full #{'border-red-500' if @user.errors[:email].any?}",
+            pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+            title: "Please enter a valid email address",
+            oninvalid: "this.setCustomValidity('Please enter a valid email address')",
+            oninput: "this.setCustomValidity('')" %>
+        <% if @user.errors[:email].any? %>
+          <p class="text-red-500 text-sm mt-1"><%= @user.errors[:email].join(", ") %></p>
+        <% end %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :password %>
+        <%= form.password_field :password,
+            required: true,
+            class: "w-full #{'border-red-500' if @user.errors[:password].any?}",
+            minlength: "6",
+            title: "Password must be at least 6 characters long",
+            oninvalid: "this.setCustomValidity('Password must be at least 6 characters long')",
+            oninput: "this.setCustomValidity('')" %>
+        <% if @user.errors[:password].any? %>
+          <p class="text-red-500 text-sm mt-1"><%= @user.errors[:password].join(", ") %></p>
+        <% end %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :password_confirmation %>
+        <%= form.password_field :password_confirmation,
+            required: true,
+            class: "w-full #{'border-red-500' if @user.errors[:password_confirmation].any?}",
+            minlength: "6",
+            title: "Please confirm your password",
+            oninvalid: "this.setCustomValidity('Please confirm your password')",
+            oninput: "this.setCustomValidity('')" %>
+        <% if @user.errors[:password_confirmation].any? %>
+          <p class="text-red-500 text-sm mt-1"><%= @user.errors[:password_confirmation].join(", ") %></p>
+        <% end %>
+      </div>
+
+      <%= form.submit "Sign Up", class: "btn btn-primary w-full" %>
+    <% end %>
+
+    <div class="mt-4 text-center">
+      <%= link_to "Already have an account? Log in here", login_path, class: "text-primary hover:underline" %>
+    </div>
+  </div>
+</div>
+
+<% content_for :head do %>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('.signup-form');
+      const passwordField = form.querySelector('input[name="user[password]"]');
+      const confirmPasswordField = form.querySelector('input[name="user[password_confirmation]"]');
+
+      confirmPasswordField.addEventListener('input', function() {
+        if (this.value !== passwordField.value) {
+          this.setCustomValidity('Passwords do not match');
+        } else {
+          this.setCustomValidity('');
+        }
+      });
+
+      form.addEventListener('submit', function(event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          Array.from(form.elements).forEach(input => {
+            if (!input.validity.valid) {
+              const errorMessage = input.title || input.validationMessage;
+              toastr.error(errorMessage);
+            }
+          });
+        }
+      });
+    });
+  </script>
+<% end %>
