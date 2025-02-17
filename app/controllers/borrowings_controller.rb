@@ -9,7 +9,7 @@ class BorrowingsController < ApplicationController
         if borrowing.persisted?
           redirect_to book_path(book), notice: "Book borrowed successfully"
         else
-          redirect_to book_path(book), alert: "Error borrowing book"
+          redirect_to book_path(book), alert: "Maximum Borrowing Limit Reached"
         end
       else
         redirect_to book_path(book), alert: "Book is already borrowed"
