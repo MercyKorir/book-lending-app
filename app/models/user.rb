@@ -7,6 +7,8 @@ class User < ApplicationRecord
                       uniqueness: true,
                       format: { with: URI::MailTo::EMAIL_REGEXP }
 
+    validates :password, length: { minimum: 6 }
+
     def admin?
         admin
     end
