@@ -1,12 +1,28 @@
-<h1><%= @book.title %></h1>
-<p>Author: <%= @book.author %></p>
-<p>ISBN: <%= @book.isbn %></p>
-<p>Status: <%= @book.available? ? "Available" : "Borrowed" %></p>
+<div class="show-book-container">
+  <div class="flex flex-row gap-6 items-center">
+    <div class="book-image">
+      <%= image_tag(@book.cover_url, alt: @book.title, class: "w-full rounded") if @book.cover_url.present? %>
+    </div>
 
-<% if @book.available? && @current_user %>
-  <%= button_to "Borrow", borrowings_path(book_id: @book.id), method: :post %>
-<% end %>
+    <div class="book-details">
+      <h1 class="fs-8 font-bold text-primary mb-2"><%= @book.title %></h1>
+      <p class="fs-5 text-secondary mb-2">Author: <span class="text-primary"><%= @book.author %></span></p>
+      <p class="fs-5 text-secondary mb-2">ISBN: <span class="text-primary"><%= @book.isbn %></span></p>
+      <p class="fs-5 mb-2 <%= @book.available? ? 'text-success' : 'text-danger' %>">
+        Status: <%= @book.available? ? "Available" : "Borrowed" %>
+      </p>
 
-<% if !@book.available? %>
-  <p>Due back: <%= @book.current_borrowing.due_date.strftime("%Y-%m-%d") %></p>
-<% end %>
+      <% if @book.synopsis.present? %>
+        <p class="fs-4 text-secondary mb-4"><%= @book.synopsis %></p>
+      <% end %>
+
+      <% if @book.available? && @current_user %>
+        <%= button_to "Borrow", borrowings_path(book_id: @book.id), method: :post, class: "btn btn-secondary" %>
+      <% end %>
+
+      <% if !@book.available? %>
+        <p class="fs-5 text-danger mb-2">Due back: <%= @book.current_borrowing.due_date.strftime("%Y-%m-%d") %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
