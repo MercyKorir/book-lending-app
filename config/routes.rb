@@ -20,7 +20,14 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/", to: "dashboard#index", as: "dashboard"
-    resources :books, except: [:show]
+    resources :books, except: [:show] do
+      member do
+        patch :toggle_visibility
+      end
+      collection do
+        get :search
+      end
+    end
 
     put "toggle_user/:id", to: "users#toggle_admin", as: "toggle_user"
   end
