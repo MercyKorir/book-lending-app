@@ -1,0 +1,44 @@
+<div class="container mx-auto px-4">
+  <h1 class="text-2xl font-bold mb-4">Manage Books</h1>
+  <%= link_to "Add New Book", new_admin_book_path, class: "btn btn-primary mb-4" %>
+  
+  <table class="min-w-full">
+    <thead>
+      <tr>
+        <th class="px-6 py-3 border-b">Title</th>
+        <th class="px-6 py-3 border-b">Author</th>
+        <th class="px-6 py-3 border-b">ISBN</th>
+        <th class="px-6 py-3 border-b">Visibility</th>
+        <th class="px-6 py-3 border-b">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td class="px-6 py-4 border-b"><%= book.title %></td>
+          <td class="px-6 py-4 border-b"><%= book.author %></td>
+          <td class="px-6 py-4 border-b"><%= book.isbn %></td>
+          <td class="px-6 py-4 border-b"><%= book.visible? ? 'Visible' : 'Hidden' %></td>
+          <td class="px-6 py-4 border-b space-x-2">
+            <%= button_to toggle_visibility_admin_book_path(book),
+                method: :patch,
+                class: "text-indigo-600 hover:text-indigo-900" do %>
+              <%= book.visible? ? 'Hide' : 'Show' %>
+            <% end %>
+            
+            <%= link_to "Edit",
+                edit_admin_book_path(book),
+                class: "btn btn-warning" %>
+                
+            <%= button_to admin_book_path(book),
+                method: :delete,
+                class: "btn btn-danger",
+                form: { data: { turbo_confirm: "Are you sure?" } } do %>
+              Delete
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

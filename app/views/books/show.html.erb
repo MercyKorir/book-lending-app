@@ -1,0 +1,12 @@
+<h1><%= @book.title %></h1>
+<p>Author: <%= @book.author %></p>
+<p>ISBN: <%= @book.isbn %></p>
+<p>Status: <%= @book.available? ? "Available" : "Borrowed" %></p>
+
+<% if @book.available? && @current_user %>
+  <%= button_to "Borrow", borrowings_path(book_id: @book.id), method: :post %>
+<% end %>
+
+<% if !@book.available? %>
+  <p>Due back: <%= @book.current_borrowing.due_date.strftime("%Y-%m-%d") %></p>
+<% end %>

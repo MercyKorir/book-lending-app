@@ -1,0 +1,22 @@
+<h1>Admin Dashboard</h1>
+
+<h2>Books</h2>
+<%= link_to "Manage Books", admin_books_path, class: "btn btn-primary" %>
+
+<h2>Users</h2>
+<table>
+  <tr>
+    <th>Email</th>
+    <th>Admin</th>
+    <th>Actions</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.admin? ? "Yes" : "No" %></td>
+      <td>
+        <%= link_to "Toggle Admin", admin_toggle_user_path(user), method: :put %>
+      </td>
+    </tr>
+  <% end %>
+</table>

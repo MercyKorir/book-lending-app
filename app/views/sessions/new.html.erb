@@ -1,0 +1,23 @@
+<div class="login-container">
+  <h1 class="text fs-6 font-bold text-primary font-upper">Login</h1>
+
+  <%= form_with url: login_path, local: true, html: { class: "login-form" } do |form| %>
+    <div class="input-group">
+      <%= form.label :email, class: "input-label" %>
+      <%= form.email_field :email, required: true, class: "input-field" %>
+    </div>
+
+    <div class="input-group">
+      <%= form.label :password, class: "input-label" %>
+      <%= form.password_field :password, required: true, class: "input-field" %>
+    </div>
+
+    <div class="button-group">
+      <%= form.submit "Login", class: "btn btn-secondary w-full" %>
+    </div>
+  <% end %>
+
+  <div class="signup-link">
+    <%= link_to "Don't have an account? Sign up here", sign_up_path, class: "text text-primary text-hover-underline" %>
+  </div>
+</div>
