@@ -200,6 +200,10 @@ body {
   gap: 12px;
 }
 
+.text-underline {
+  text-decoration: underline;
+}
+
 .text-hover-underline:hover {
   text-decoration: underline;
 }
