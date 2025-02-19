@@ -1,22 +1,49 @@
-<h1>Admin Dashboard</h1>
+<div class="books-container">
+  <h1 class="fs-8 font-bold text text-primary mb-6 text-center">Admin Dashboard</h1>
 
-<h2>Books</h2>
-<%= link_to "Manage Books", admin_books_path, class: "btn btn-primary" %>
+  <section class="mb-2">
+    <div class="flex justify-between items-center p-4" style="background-color: var(--secondary-background-color); border-radius: 8px;">
+      <h2 class="fs-6 text-primary">Books Management</h2>
+      <%= link_to "Manage Books", admin_books_path, class: "btn btn-secondary" %>
+    </div>
+  </section>
 
-<h2>Users</h2>
-<table>
-  <tr>
-    <th>Email</th>
-    <th>Admin</th>
-    <th>Actions</th>
-  </tr>
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.email %></td>
-      <td><%= user.admin? ? "Yes" : "No" %></td>
-      <td>
-        <%= link_to "Toggle Admin", admin_toggle_user_path(user), method: :put %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+  <section>
+    <div class="p-2" style="background-color: var(--secondary-background-color); border-radius: 8px;">
+      <h2 class="fs-6 text-primary mb-2 mt-2 text-center">Users Management</h2>
+      
+      <div class="w-full">
+        <table class="w-full">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border-color-light);">
+              <th class="p-2 text-left text-secondary">Email</th>
+              <th class="p-2 text-left text-secondary">Admin Status</th>
+              <th class="p-2 text-center text-secondary">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr style="border-bottom: 1px solid var(--border-color-light);">
+                <td class="p-2 text-primary text-left"><%= user.email %></td>
+                <td class="p-2 text-left">
+                  <span class="p-2 fs-2 font-bold" 
+                        style="border-radius: 4px; background-color: <%= user.admin? ? 'rgba(16, 185, 129, 0.1)' : 'rgba(220, 38, 38, 0.1)' %>; 
+                              color: <%= user.admin? ? 'var(--success-color)' : 'var(--error-color)' %>">
+                    <%= user.admin? ? "Admin" : "User" %>
+                  </span>
+                </td>
+                <td class="p-2 text-center">
+                  <%= button_to "Toggle Admin", 
+                      admin_toggle_user_path(user), 
+                      method: :put,
+                      class: "btn btn-primary fs-2",
+                      style: "padding: 8px 15px; border: 1px solid var(--secondary-color);" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
