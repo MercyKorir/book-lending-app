@@ -88,7 +88,7 @@ RAILS_MASTER_KEY=<master_key_value> docker compose up --build
 
 replacing `<master_key_value>` with copied value.
 
-3. **Access the Application**
+2. **Access the Application**
 Visit: `http://localhost:3000/` 🎉
 
 
