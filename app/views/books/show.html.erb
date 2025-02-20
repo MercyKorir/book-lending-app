@@ -17,12 +17,16 @@
       <% end %>
 
       <% if @book.available? && @current_user %>
-        <%= button_to "Borrow", borrowings_path(book_id: @book.id), method: :post, class: "btn btn-secondary" %>
+        <%= button_to "Borrow", borrowings_path(book_id: @book.id), method: :post, class: "btn btn-secondary w-90" %>
       <% end %>
 
       <% if !@book.available? %>
         <p class="fs-5 text-danger mb-2">Due back: <%= @book.current_borrowing.due_date.strftime("%Y-%m-%d") %></p>
       <% end %>
+
+      <div class="mt-4">
+        <%= link_to "Back to Books", books_path, class: "btn btn-primary" %>
+      </div>
     </div>
   </div>
 </div>
