@@ -1,26 +1,39 @@
-<%= form_with model: book, url: book.persisted? ? admin_book_path(book) : admin_books_path, method: book.persisted? ? :patch : :post, local: true do |form| %>
-  <% if book.errors.any? %>
-    <div class="alert alert-error">
-      <% book.errors.full_messages.each do |message| %>
-        <p><%= message %></p>
-      <% end %>
-    </div>
+<div class="login-container">
+  <h1 class="fs-6 font-bold text-primary mb-4">
+    <%= book.persisted? ? "Edit Book" : "Add New Book" %>
+  </h1>
+
+  <%= form_with model: book,
+      url: book.persisted? ? admin_book_path(book) : admin_books_path,
+      method: book.persisted? ? :patch : :post,
+      local: true,
+      class: "login-form" do |form| %>
+    <% if book.errors.any? %>
+      <div class="p-4 mb-4" style="background-color: rgba(220, 38, 38, 0.1); border-radius: 8px; border: 1px solid var(--error-color);">
+        <% book.errors.full_messages.each do |message| %>
+          <p class="text-danger fs-3"><%= message %></p>
+        <% end %>
+      </div>
+    <% end %>
+      <div class="input-group">
+        <%= form.label :title, class: "input-label" %>
+        <%= form.text_field :title, required: true, class: "input-field", placeholder: "Enter book title" %>
+      </div>
+    
+      <div class="input-group">
+        <%= form.label :author, class: "input-label" %>
+        <%= form.text_field :author, required: true, class: "input-field", placeholder: "Enter author name" %>
+      </div>
+    
+      <div class="input-group">
+        <%= form.label :isbn, class: "input-label" %>
+        <%= form.text_field :isbn, required: true, class: "input-field", placeholder: "Enter ISBN number" %>
+      </div>
+    
+      <div class="button-group flex flex-col gap-3">
+          <%= form.submit book.persisted? ? "Update Book" : "Create Book", class: "btn btn-secondary" %>
+          <%= link_to "Back to Books", admin_books_path, class: "btn btn-primary" %>
+      </div>
   <% end %>
-    <div>
-      <%= form.label :title %>
-      <%= form.text_field :title, required: true %>
-    </div>
-  
-    <div>
-      <%= form.label :author %>
-      <%= form.text_field :author, required: true %>
-    </div>
-  
-    <div>
-      <%= form.label :isbn %>
-      <%= form.text_field :isbn, required: true %>
-    </div>
-  
-    <%= form.submit book.persisted? ? "Update Book" : "Create Book", class: "btn btn-success" %>
-  <% end %>
+</div>
   
