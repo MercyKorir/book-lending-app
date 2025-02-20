@@ -1,28 +1,44 @@
-<div class="card">
-  <h1 class="text-center mb-6">Your Borrowed Books</h1>
+<div class="books-container">
+  <h1 class="fs-8 font-bold text-primary mb-6 text-center">My Profile</h1>
   
-  <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          <th>Book</th>
-          <th>Due Date</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @active_borrowings.each do |borrowing| %>
-          <tr>
-            <td><%= borrowing.book.title %></td>
-            <td><%= borrowing.due_date.strftime("%B %d, %Y") %></td>
-            <td>
-              <%= button_to "Return", return_borrowing_path(borrowing), 
-                  method: :put, 
-                  class: "btn btn-primary" %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+  <section>
+  <div class="p-2" style="background-color: var(--secondary-background-color); border-radius: 8px;">
+    <h2 class="fs-6 text-primary mb-2 mt-2 text-center">Borrowed Books</h2>
+      <div class="w-full">
+        <table class="w-full">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border-color-light);">
+              <th class="p-2 text-left text-secondary">Book</th>
+              <th class="p-2 text-left text-secondary">Due Date</th>
+              <th class="p-2 text-center text-secondary">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @active_borrowings.each do |borrowing| %>
+              <tr style="border-bottom: 1px solid var(--border-color-light);">
+                <td class="p-2 text-primary text-left">
+                  <%= borrowing.book.title %>
+                </td>
+                <td class="p-2 text-left">
+                  <span class="p-2 fs-2 font-bold"
+                      style="border-radius: 4px; 
+                            background-color: <%= borrowing.due_date < Date.today ? 'rgba(220, 38, 38, 0.1)' : 'rgba(16, 185, 129, 0.1)' %>; 
+                            color: <%= borrowing.due_date < Date.today ? 'var(--error-color)' : 'var(--success-color)' %>">
+                    <%= borrowing.due_date.strftime("%B %d, %Y") %>
+                  </span>
+                </td>
+                <td class="p-2 text-center">
+                  <%= button_to "Return Book",
+                      return_borrowing_path(borrowing), 
+                      method: :put, 
+                      class: "btn btn-primary fs-2",
+                      style: "padding: 8px 15px; border: 1px solid var(--secondary-color);" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>                                    
+      </div>
+    </div>
+  </section>
 </div>
