@@ -14,8 +14,9 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
     - [Using Docker (Recommended)](#using-docker-recommended)
     - [Without Docker](#without-docker)
 5. [🔥 Usage](#-usage)
-6. [🧑‍💻 Contribution Guide](#-contribution-guide)
-7. [🛡️ Security & License](#-security-&-license)
+6. [🔑 Admin Default Logins](#-admin-default-logins)
+7. [🧑‍💻 Contribution Guide](#-contribution-guide)
+8. [🛡️ Security & License](#-security-&-license)
 
 ---
 
@@ -122,6 +123,14 @@ Visit: `http://localhost:3000/` 🎉
 - **Return Books** – Return borrowed books before the due date.
 
 ---
+
+## 🔑 Admin Default Logins
+
+To access the **Admin Dashboard**, use the following default credentials:
+- **Email:** `admin@books.com`
+- **Password:** `admin123`
+
+**Note: For security reasons, update these credentials in production.**
 
 ## 🧑‍💻 Contribution Guide
 👥 We welcome contributions! Please follow these steps:
