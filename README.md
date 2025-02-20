@@ -15,7 +15,7 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
     - [Without Docker](#without-docker)
 5. [🔥 Usage](#-usage)
 6. [🧑‍💻 Contribution Guide](#-contribution-guide)
-7. [🛡️ Security & License](#-security--license)
+7. [🛡️ Security & License](#-security-&-license)
 
 ---
 
