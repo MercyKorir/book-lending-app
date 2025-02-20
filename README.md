@@ -15,8 +15,9 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
     - [Without Docker](#without-docker)
 5. [🔥 Usage](#-usage)
 6. [🔑 Admin Default Logins](#-admin-default-logins)
-7. [🧑‍💻 Contribution Guide](#-contribution-guide)
-8. [🛡️ Security & License](#-security-&-license)
+7. [🌐 Open Library API Integration](#-open-library-api-integration)
+8. [🧑‍💻 Contribution Guide](#-contribution-guide)
+9. [🛡️ Security & License](#-security-&-license)
 
 ---
 
@@ -27,6 +28,7 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
 - 🔔 **Overdue Alerts** – Highlight overdue books in red.
 - 👥 **User Authentication** – Secure login and user roles.
 - 👥 **Admin Dashboard** – Admin Book and User Management.
+- 🌐 **Open Library API Integration** – Admins can search for books by ISBN using the Open Library API and create new book entries based on the fetched data.
 
 ---
 
@@ -36,6 +38,7 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
 - **Authentication:** Devise
 - **Frontend:** ERB, CSS3
 - **Containerization:** Docker
+- **External API:** Open Library API
 
 ---
 
@@ -131,6 +134,16 @@ To access the **Admin Dashboard**, use the following default credentials:
 - **Password:** `admin123`
 
 **Note: For security reasons, update these credentials in production.**
+
+---
+
+## 🌐 Open Library API Integration
+
+- Admins can search for books by entering the ISBN in the book creation form.
+- The system fetches book details such as title, author, and cover image from the Open Library API.
+- Admins can review the fetched data and proceed to create a new book entry.
+
+---
 
 ## 🧑‍💻 Contribution Guide
 👥 We welcome contributions! Please follow these steps:
