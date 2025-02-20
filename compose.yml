@@ -1,0 +1,9 @@
+services:
+  web:
+    build: .
+    environment:
+      - RAILS_MASTER_KEY
+      - RAILS_ENV=development
+      - BUNDLE_WITHOUT=
+    ports:
+      - "3000:80"
