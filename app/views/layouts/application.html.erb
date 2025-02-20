@@ -31,9 +31,9 @@
           <a href="/" class="text text-primary fs-6 font-bold font-upper ls-2">BookLender</a>
         </div>
         <div class="flex flex-row justify-between items-center gap-6">
-            <%= link_to "Home", books_path, class: "text text-secondary fs-5 text-hover-underline" %>
+            <%= link_to "Home", books_path, class: "text text-secondary fs-5 text-hover-underline #{'text-accent text-underline' if request.path == '/' || request.path.start_with?('/books')}" %>
             <% if @current_user&.admin? %>
-              <%= link_to "Admin", admin_dashboard_path, class: "text text-secondary fs-5 text-hover-underline" %>
+              <%= link_to "Admin", admin_dashboard_path, class: "text text-secondary fs-5 text-hover-underline #{'text-accent text-underline' if request.path.start_with?('/admin')}" %>
             <% end %>
         </div>
         <div class="flex justify-between items-center">

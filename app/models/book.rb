@@ -17,6 +17,5 @@ class Book < ApplicationRecord
     end
 
     def self.create_from_open_library(isbn)
-      # We'll implement this next
     end
 end

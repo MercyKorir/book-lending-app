@@ -9,15 +9,15 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
 2. [🛠 Tech Stack](#-tech-stack)
 3. [📂 Project Structure](#-project-structure)
 4. [🎯 Installation & Setup](#-installation--setup)
-    - [1️⃣ Prerequisites](#1-prerequisites)
-    - [2️⃣ Clone the Repository](#2-clone-the-repository)
-    - [3️⃣ Install Dependencies](#3-install-dependencies)
-    - [4️⃣ Configure Environment](#4-configure-environment)
-    - [5️⃣ Set Up Database](#5-set-up-database)
-    - [6️⃣ Start the Server](#6-start-the-server)
+    - [Prerequisites](#prerequisites)
+    - [Clone the Repository](#clone-the-repository)
+    - [Using Docker (Recommended)](#using-docker-recommended)
+    - [Without Docker](#without-docker)
 5. [🔥 Usage](#-usage)
-6. [🧑‍💻 Contribution Guide](#-contribution-guide)
-7. [🛡️ Security & License](#-security--license)
+6. [🔑 Admin Default Logins](#-admin-default-logins)
+7. [🌐 Open Library API Integration](#-open-library-api-integration)
+8. [🧑‍💻 Contribution Guide](#-contribution-guide)
+9. [🛡️ Security & License](#-security-&-license)
 
 ---
 
@@ -26,8 +26,9 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
 - 🔄 **Real-time Availability** – Borrow buttons are disabled for unavailable books.
 - 📅 **Due Date Tracking** – Borrowed books display due dates in the user profile.
 - 🔔 **Overdue Alerts** – Highlight overdue books in red.
-- 🔍 **Search & Filter** – Quickly find books.
 - 👥 **User Authentication** – Secure login and user roles.
+- 👥 **Admin Dashboard** – Admin Book and User Management.
+- 🌐 **Open Library API Integration** – Admins can search for books by ISBN using the Open Library API and create new book entries based on the fetched data.
 
 ---
 
@@ -35,20 +36,24 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
 - **Framework:** Ruby on Rails
 - **Database:** SQLite3
 - **Authentication:** Devise
-- **Frontend:** ERB, Tailwind CSS
+- **Frontend:** ERB, CSS3
+- **Containerization:** Docker
+- **External API:** Open Library API
 
 ---
 
 ## 📂 Project Structure
 ```
 📂 book-lending-app
-│── 📁 app/controllers      # Controllers (BooksController, BorrowingsController, etc.)
+│── 📁 app/controllers      # Controllers
 │── 📁 app/models           # Models (Book, User, Borrowing)
 │── 📁 db/migrate           # Database migrations
 │── 📁 app/views            # ERB templates
 │── 📁 config/routes.rb     # Application routes
 │── 📁 public               # Static assets
 │── 📁 test                 # Unit & feature tests
+│── Dockerfile              # Docker image setup
+│── docker-compose.yml      # Docker Compose configuration
 │── Gemfile                 # Ruby gems dependencies
 │── Rakefile                # Task automation
 │── README.md               # Project documentation
@@ -59,42 +64,58 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
 
 ## 🎯 Installation & Setup
 
-### **1️⃣ Prerequisites**
+### **Prerequisites**
 Ensure you have the following installed:
 - Ruby `>=3.0`
-- Rails `>=7.0`
+- Rails `>=8.0`
 - SQLite3
-- Node.js `>=18`
+- Node.js `>=23`
+- Docker (for Docker setup)
 
-### **2️⃣ Clone the Repository**
+### **Clone the Repository**
 ```bash
 git clone https://github.com/MercyKorir/book-lending-app.git
 cd book-lending-app
 ```
 
-### **3️⃣ Install Dependencies**
+### **Using Docker (Recommended)**
+
+1. **Build and Start Docker Containers**
+
+Copy `<master_key_value>` from `config/master.key`
+and run the command
+
+```bash
+RAILS_MASTER_KEY=<master_key_value> docker compose up --build
+```
+
+replacing `<master_key_value>` with copied value.
+
+2. **Access the Application**
+Visit: `http://localhost:3000/` 🎉
+
+
+### **Without Docker**
+
+1. **Install Dependencies**
 ```bash
 bundle install
 ```
 
-### **4️⃣ Configure Environment**
-```bash
-cp .env.example .env
-```
-Update the `.env` file with your configuration.
-
-### **5️⃣ Set Up Database**
+2. **Set Up Database**
 ```bash
 rails db:create
 rails db:migrate
 rails db:seed
 ```
 
-### **6️⃣ Start the Server**
+3. **Start the Server**
 ```bash
 rails server
 ```
-Visit: `http://127.0.0.1:3000` 🎉
+
+4. **Access the Application**
+Visit: `http://localhost:3000/` 🎉
 
 ---
 
@@ -103,6 +124,24 @@ Visit: `http://127.0.0.1:3000` 🎉
 - **Borrow Books** – Click “Borrow” (only if available).
 - **View Due Dates** – Check the user profile.
 - **Return Books** – Return borrowed books before the due date.
+
+---
+
+## 🔑 Admin Default Logins
+
+To access the **Admin Dashboard**, use the following default credentials:
+- **Email:** `admin@books.com`
+- **Password:** `admin123`
+
+**Note: For security reasons, update these credentials in production.**
+
+---
+
+## 🌐 Open Library API Integration
+
+- Admins can search for books by entering the ISBN in the book creation form.
+- The system fetches book details such as title, author, and cover image from the Open Library API.
+- Admins can review the fetched data and proceed to create a new book entry.
 
 ---
 

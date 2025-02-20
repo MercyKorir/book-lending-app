@@ -1,38 +1,62 @@
-<div class="container mx-auto px-4">
-  <h1 class="text-2xl font-bold mb-4">Manage Books</h1>
-  <%= link_to "Add New Book", new_admin_book_path, class: "btn btn-primary mb-4" %>
+<div class="books-container">
+  <h1 class="fs-8 font-bold text text-primary mb-6 text-center">Manage Books</h1>
+
+  <section class="mb-2">
+    <div class="flex justify-between items-center p-4" style="background-color: var(--secondary-background-color); border-radius: 8px;">
+      <h2 class="fs-6 text-primary">Book Creation</h2>
+      <div class=flex gap-2>
+        <%= link_to "Search Open Library", search_admin_books_path, class: "btn btn-primary" %>
+        <%= link_to "Add New Book", new_admin_book_path, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </section>
   
-  <table class="min-w-full">
-    <thead>
-      <tr>
-        <th class="px-6 py-3 border-b">Title</th>
-        <th class="px-6 py-3 border-b">Author</th>
-        <th class="px-6 py-3 border-b">ISBN</th>
-        <th class="px-6 py-3 border-b">Visibility</th>
-        <th class="px-6 py-3 border-b">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
+  <section>
+    <div class="p-2" style="background-color: var(--secondary-background-color); border-radius: 8px;">
+      <h2 class="fs-6 text-primary mb-4 mt-2 text-center">Books Management</h2>
+      
+      <div class="w-full">
+        <table class="w-full">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border-color-light);">
+              <th class="p-2 text-left text-secondary">Title</th>
+              <th class="p-2 text-left text-secondary">Author</th>
+              <th class="p-2 text-left text-secondary">ISBN</th>
+              <th class="p-2 text-left text-secondary">Visibility</th>
+              <th class="p-2 text-center text-secondary">Actions</th>
+            </tr>
+          </thead>
+        <tbody>
       <% @books.each do |book| %>
-        <tr>
-          <td class="px-6 py-4 border-b"><%= book.title %></td>
-          <td class="px-6 py-4 border-b"><%= book.author %></td>
-          <td class="px-6 py-4 border-b"><%= book.isbn %></td>
-          <td class="px-6 py-4 border-b"><%= book.visible? ? 'Visible' : 'Hidden' %></td>
-          <td class="px-6 py-4 border-b space-x-2">
+        <tr style="border-bottom: 1px solid var(--border-color-light);">
+          <td class="p-2 text-primary text-left"><%= book.title %></td>
+          <td class="p-2 text-primary text-left"><%= book.author %></td>
+          <td class="p-2 text-primary text-left"><%= book.isbn %></td>
+          <td class="p-2 text-left">
+            <span class="p-2 fs-2 font-bold"
+              style="border-radius: 4px; background-color: <%= book.visible? ? 'rgba(16, 185, 129, 0.1)' : 'rgba(220, 38, 38, 0.1)' %>; 
+              color: <%= book.visible? ? 'var(--success-color)' : 'var(--error-color)' %>">
+              <%= book.visible? ? 'Visible' : 'Hidden' %>
+            </span>
+          </td>
+          <td class="p-2 text-center flex flex-col gap-2">
             <%= button_to toggle_visibility_admin_book_path(book),
                 method: :patch,
-                class: "text-indigo-600 hover:text-indigo-900" do %>
+                class: "btn btn-secondary fs-2",
+                style: "padding: 8px 15px;" do
+            %>
               <%= book.visible? ? 'Hide' : 'Show' %>
             <% end %>
             
             <%= link_to "Edit",
                 edit_admin_book_path(book),
-                class: "btn btn-warning" %>
+                class: "btn btn-primary fs-2",
+                style: "padding: 8px 15px; border: 1px solid var(--secondary-color);" %>
                 
             <%= button_to admin_book_path(book),
                 method: :delete,
                 class: "btn btn-danger",
+                style: "padding: 8px 15px;",
                 form: { data: { turbo_confirm: "Are you sure?" } } do %>
               Delete
             <% end %>
@@ -41,4 +65,5 @@
       <% end %>
     </tbody>
   </table>
+  </section>
 </div>
