@@ -11,10 +11,8 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
 4. [🎯 Installation & Setup](#-installation--setup)
     - [1️⃣ Prerequisites](#1-prerequisites)
     - [2️⃣ Clone the Repository](#2-clone-the-repository)
-    - [3️⃣ Install Dependencies](#3-install-dependencies)
-    - [4️⃣ Configure Environment](#4-configure-environment)
-    - [5️⃣ Set Up Database](#5-set-up-database)
-    - [6️⃣ Start the Server](#6-start-the-server)
+    - [3️⃣ Using Docker (Recommended)](#3-using-docker-recommended)
+    - [4️⃣ Without Docker](#4-without-docker)
 5. [🔥 Usage](#-usage)
 6. [🧑‍💻 Contribution Guide](#-contribution-guide)
 7. [🛡️ Security & License](#-security--license)
@@ -26,8 +24,8 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
 - 🔄 **Real-time Availability** – Borrow buttons are disabled for unavailable books.
 - 📅 **Due Date Tracking** – Borrowed books display due dates in the user profile.
 - 🔔 **Overdue Alerts** – Highlight overdue books in red.
-- 🔍 **Search & Filter** – Quickly find books.
 - 👥 **User Authentication** – Secure login and user roles.
+- 👥 **Admin Dashboard** – Admin Book and User Management.
 
 ---
 
@@ -35,20 +33,23 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
 - **Framework:** Ruby on Rails
 - **Database:** SQLite3
 - **Authentication:** Devise
-- **Frontend:** ERB, Tailwind CSS
+- **Frontend:** ERB, CSS3
+- **Containerization:** Docker
 
 ---
 
 ## 📂 Project Structure
 ```
 📂 book-lending-app
-│── 📁 app/controllers      # Controllers (BooksController, BorrowingsController, etc.)
+│── 📁 app/controllers      # Controllers
 │── 📁 app/models           # Models (Book, User, Borrowing)
 │── 📁 db/migrate           # Database migrations
 │── 📁 app/views            # ERB templates
 │── 📁 config/routes.rb     # Application routes
 │── 📁 public               # Static assets
 │── 📁 test                 # Unit & feature tests
+│── Dockerfile              # Docker image setup
+│── docker-compose.yml      # Docker Compose configuration
 │── Gemfile                 # Ruby gems dependencies
 │── Rakefile                # Task automation
 │── README.md               # Project documentation
@@ -62,9 +63,10 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
 ### **1️⃣ Prerequisites**
 Ensure you have the following installed:
 - Ruby `>=3.0`
-- Rails `>=7.0`
+- Rails `>=8.0`
 - SQLite3
-- Node.js `>=18`
+- Node.js `>=23`
+- Docker (for Docker setup)
 
 ### **2️⃣ Clone the Repository**
 ```bash
@@ -72,29 +74,44 @@ git clone https://github.com/MercyKorir/book-lending-app.git
 cd book-lending-app
 ```
 
-### **3️⃣ Install Dependencies**
+### **3️⃣ Using Docker (Recommended)**
+
+1. **Build and Start Docker Containers**
+
+Copy ```bash <master_key_value> ``` from ```bash config/master.key ```
+and run the command
+
+```bash
+RAILS_MASTER_KEY=<master_key_value> docker compose up --build
+```
+
+replacing ```bash <master_key_value> ``` with copied value.
+
+3. **Access the Application**
+Visit: `http://localhost:3000/` 🎉
+
+
+### **4️⃣ Without Docker**
+
+1. **Install Dependencies**
 ```bash
 bundle install
 ```
 
-### **4️⃣ Configure Environment**
-```bash
-cp .env.example .env
-```
-Update the `.env` file with your configuration.
-
-### **5️⃣ Set Up Database**
+2. **Set Up Database**
 ```bash
 rails db:create
 rails db:migrate
 rails db:seed
 ```
 
-### **6️⃣ Start the Server**
+3. **Start the Server**
 ```bash
 rails server
 ```
-Visit: `http://127.0.0.1:3000` 🎉
+
+4. **Access the Application**
+Visit: `http://localhost:3000/` 🎉
 
 ---
 
