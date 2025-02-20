@@ -9,10 +9,10 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
 2. [🛠 Tech Stack](#-tech-stack)
 3. [📂 Project Structure](#-project-structure)
 4. [🎯 Installation & Setup](#-installation--setup)
-    - [1️⃣ Prerequisites](#1-prerequisites)
-    - [2️⃣ Clone the Repository](#2-clone-the-repository)
-    - [3️⃣ Using Docker (Recommended)](#3-using-docker-recommended)
-    - [4️⃣ Without Docker](#4-without-docker)
+    - [Prerequisites](#prerequisites)
+    - [Clone the Repository](#clone-the-repository)
+    - [Using Docker (Recommended)](#using-docker-recommended)
+    - [Without Docker](#without-docker)
 5. [🔥 Usage](#-usage)
 6. [🧑‍💻 Contribution Guide](#-contribution-guide)
 7. [🛡️ Security & License](#-security--license)
@@ -60,7 +60,7 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
 
 ## 🎯 Installation & Setup
 
-### **1️⃣ Prerequisites**
+### **Prerequisites**
 Ensure you have the following installed:
 - Ruby `>=3.0`
 - Rails `>=8.0`
@@ -68,30 +68,30 @@ Ensure you have the following installed:
 - Node.js `>=23`
 - Docker (for Docker setup)
 
-### **2️⃣ Clone the Repository**
+### **Clone the Repository**
 ```bash
 git clone https://github.com/MercyKorir/book-lending-app.git
 cd book-lending-app
 ```
 
-### **3️⃣ Using Docker (Recommended)**
+### **Using Docker (Recommended)**
 
 1. **Build and Start Docker Containers**
 
-Copy ```bash <master_key_value> ``` from ```bash config/master.key ```
+Copy `<master_key_value>` from `config/master.key`
 and run the command
 
 ```bash
 RAILS_MASTER_KEY=<master_key_value> docker compose up --build
 ```
 
-replacing ```bash <master_key_value> ``` with copied value.
+replacing `<master_key_value>` with copied value.
 
 3. **Access the Application**
 Visit: `http://localhost:3000/` 🎉
 
 
-### **4️⃣ Without Docker**
+### **Without Docker**
 
 1. **Install Dependencies**
 ```bash
