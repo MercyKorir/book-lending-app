@@ -31,6 +31,23 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+.search-container {
+  background-color: transparent;
+}
+
+.search-container .search-input {
+  border-radius: 2px;
+  background-color: transparent;
+  color: var(--primary-text-color);
+  border-width: 1px;
+  border-color: var(--border-color-dark);
+}
+
+.search-container .search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
 /* Book Cover */
 .book-cover {
   position: relative;
