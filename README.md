@@ -18,7 +18,7 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
 7. [🌐 Open Library API Integration](#-open-library-api-integration)
 8. [🧑‍💻 Contribution Guide](#-contribution-guide)
 9. [🛡️ Security & License](#-security-&-license)
-10. [🚀 Demo](#demo)
+10. [🚀 Demo](#-demo)
 
 ---
 
