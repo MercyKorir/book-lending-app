@@ -1,0 +1,39 @@
+<div class="books-container">
+  <h1 class="fs-8 font-bold text text-primary mb-6 text-center">Borrowed Books</h1>
+  
+  <div class="p-2" style="background-color: var(--secondary-background-color); border-radius: 8px;">
+    <div class="w-full">
+      <table class="w-full">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--border-color-light);">
+            <th class="p-2 text-left text-secondary">Book Title</th>
+            <th class="p-2 text-left text-secondary">Borrowed By</th>
+            <th class="p-2 text-left text-secondary">Borrowed Date</th>
+            <th class="p-2 text-center text-secondary">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @borrowings.each do |borrowing| %>
+            <tr style="border-bottom: 1px solid var(--border-color-light);">
+              <td class="p-2 text-primary text-left"><%= borrowing.book.title %></td>
+              <td class="p-2 text-left"><%= borrowing.user.email %></td>
+              <td class="p-2 text-left"><%= borrowing.created_at.strftime("%B %d, %Y") %></td>
+              <td class="p-2 text-center">
+                <%= button_to "Force Return",
+                    force_return_admin_borrowing_path(borrowing),
+                    method: :put,
+                    class: "btn btn-danger fs-2",
+                    style: "padding: 8px 15px; border: 1px solid var(--error-color);",
+                    data: { confirm: "Are you sure you want to force return this book?" } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+      <% if @borrowings.empty? %>
+        <p class="text-center p-4 text-secondary">No books are currently borrowed.</p>
+      <% end %>
+    </div>
+  </div>
+</div>

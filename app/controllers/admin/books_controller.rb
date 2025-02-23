@@ -2,6 +2,10 @@ module Admin
   class BooksController < ApplicationController
     before_action :authenticate_admin!
 
+    def borrowed
+      @borrowings = Borrowing.includes(:user, :book).active
+    end
+
     def index
       @books = Book.all
     end

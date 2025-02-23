@@ -26,6 +26,13 @@ Rails.application.routes.draw do
       end
       collection do
         get :search
+        get :borrowed
+      end
+    end
+
+    resources :borrowings, only: [] do
+      member do
+        put :force_return
       end
     end
 
