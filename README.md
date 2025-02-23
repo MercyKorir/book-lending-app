@@ -18,11 +18,13 @@ A simple and efficient book borrowing system built with **Ruby on Rails** and **
 7. [🌐 Open Library API Integration](#-open-library-api-integration)
 8. [🧑‍💻 Contribution Guide](#-contribution-guide)
 9. [🛡️ Security & License](#-security-&-license)
+10. [🚀 Demo](#demo)
 
 ---
 
 ## 🚀 Features
 - 🏷️ **Book Borrowing & Return** – Users can borrow and return books.
+- 🔍 **Book Search** - Users can search for books by title, author, or ISBN.
 - 🔄 **Real-time Availability** – Borrow buttons are disabled for unavailable books.
 - 📅 **Due Date Tracking** – Borrowed books display due dates in the user profile.
 - 🔔 **Overdue Alerts** – Highlight overdue books in red.
@@ -160,6 +162,17 @@ To access the **Admin Dashboard**, use the following default credentials:
 ## 🛡️ Security & License
 - **Security:** If you find any security vulnerabilities, report them via issues.
 - **License:** This project is licensed under the **MIT License**.
+
+---
+
+## 🚀 Demo
+<div align="center">
+  <a href="https://drive.google.com/file/d/11z-fMoI26QTyDnBe1l3CXTCw3dNpkNO2/view?usp=drive_link">
+    <img src="./book_lending_app_thumbnail.png" alt="Book Lending App Demo Video" style="max-width: 100%; object-fit: contain;" />
+  </a>
+</div>
+
+Click the image above to watch the demo video.
 
 ---
 
