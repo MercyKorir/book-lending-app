@@ -9,6 +9,7 @@
             <th class="p-2 text-left text-secondary">Book Title</th>
             <th class="p-2 text-left text-secondary">Borrowed By</th>
             <th class="p-2 text-left text-secondary">Borrowed Date</th>
+            <th class="p-2 text-left text-secondary">Due Date</th>
             <th class="p-2 text-center text-secondary">Actions</th>
           </tr>
         </thead>
@@ -17,6 +18,7 @@
             <tr style="border-bottom: 1px solid var(--border-color-light);">
               <td class="p-2 text-primary text-left"><%= borrowing.book.title %></td>
               <td class="p-2 text-left"><%= borrowing.user.email %></td>
+              <td class="p-2 text-left"><%= borrowing.due_date.strftime("%B %d, %Y") %></td>
               <td class="p-2 text-left"><%= borrowing.created_at.strftime("%B %d, %Y") %></td>
               <td class="p-2 text-center">
                 <%= button_to "Force Return",

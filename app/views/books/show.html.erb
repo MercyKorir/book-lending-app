@@ -21,7 +21,7 @@
       <% end %>
 
       <% if !@book.available? %>
-        <p class="fs-5 text-danger mb-2">Due back: <%= @book.current_borrowing.due_date.strftime("%Y-%m-%d") %></p>
+        <p class="fs-5 text-danger mb-2">Due back: <%= @book.current_borrowing.due_date.strftime("%B %d, %Y") %></p>
       <% end %>
 
       <div class="mt-4">
