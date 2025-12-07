@@ -84,6 +84,12 @@ cd book-lending-app
 
 1. **Build and Start Docker Containers**
 
+Generate master key by running the command on the root of project
+
+```bash
+bin/rails credentials:edit
+```
+
 Copy `<master_key_value>` from `config/master.key`
 and run the command
 
